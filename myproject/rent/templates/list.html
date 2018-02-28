@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+.jumbotron {
+    background-color:#143A52;
+    color: #fff;
+}
+h1{
+  color : white ;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+}
+
+th, td {
+    text-align: left;
+    padding: 16px;
+}
+tr:nth-child(even) {
+      background-color: #143A52;
+        color: #fff;
+}
+.button {
+  background-color: white ;
+  color: black;
+  border: 2px solid #48D1CC;
+  border-radius: 10px;
+  padding: 14px 40px;
+  margin: 5
+}
+.button:hover {
+    background-color: pink;
+    color:black;
+}
+</style>
+</head>
+<body style="background-color :#6E828A;text-align:center">
+<div class="jumbotron text-center">
+	<h1>Carlist</h1><br>
+	<table>
+  <tr><h3>
+    <th>Model</th>
+    <th>Detail</th>
+    <th>Price</th>
+  </tr>
+			{% for car in object_list %}
+<tr>
+	<td> {{car.model}}</td>
+	<td> {{car.detail}}</td>
+	<td>{{car.price}}</td>
+</tr>
+{% empty %}
+{% endfor %}
+</table>
+</div>
+<a href="{% url 'profile'%}"><button class="button"><font size="4">Back.</button></a>
+</body >

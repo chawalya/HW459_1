@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+  .button {
+    background-color: white ;
+    color: black;
+    border: 2px solid #48D1CC;
+    border-radius: 10px;
+    padding: 14px 40px;
+    margin: 5%
+  }
+  .button:hover {
+      background-color: pink;
+      color:black;
+  }
+  .jumbotron {
+      background-color:#143A52;
+      color: #fff;
+  }
+</style>
+<title>Profile</title>
+</head>
+<body style="background-color :#6E828A;text-align:center">
+<div class="jumbotron text-center">
+{% if user.is_authenticated %}
+  <h1>Hi {{ user.username }}!</h1>
+  <a href="{% url 'rent'%}"><button class="button"><font size="4">Rent Car.</button></a>
+  <a href="{% url 'car'%}"><button class="button"><font size="4"> Car model.</button></a>
+  <a href="{% url 'logout'%}"><button class="button"><font size="4"> logout.</button></a>
+{% else %}
+<br>
+  <p><h1>You are not logged in</h1></p>
+  <a href="{% url 'login' %}"><font size="5">login</a>
+{% endif %}
+</div>
+</body>
+</html>

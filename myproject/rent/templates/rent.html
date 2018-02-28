@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+  .button {
+    background-color: white ;
+    color: black;
+    border: 2px solid #48D1CC;
+    border-radius: 10px;
+    padding: 14px 40px;
+    margin: 5%
+  }
+  .button:hover {
+      background-color: pink;
+      color:black;
+  }
+  .jumbotron {
+      background-color:#143A52;
+      color: #fff;
+  }
+</style>
+<title>Profile</title>
+</head>
+<body style="background-color :#6E828A;text-align:center">
+  <div class="jumbotron text-center">
+    {% if user.is_authenticated %}
+	 <h1> Hi {{ user.username }}! </h1>
+   {% load static %}
+	  <a href="{% url 'profile'%}"><button class="button" ><font size="4">Go to profile.</font ></button></a>
+    <h2>Rent</h2>
+	  {% csrf_token %}
+    <h3>Select your car</h3>
+    {% load crispy_forms_tags %}
+    {% crispy form %}
+     {{ profile_form.as_p }}
+      <h4 style="color:white;">Please fill in startdatetime,returndatetime of YYYY-MM-DD HH:MM:SS </h4>
+      <!-- {{ form.car}} -->
+      <!-- {{ form.fee.label_tag }}
+      {{ form.fee }} -->
+	{% else %}
+		 <p>You are not logged in</p>
+  		 <a href="{% url 'login' %}">login</a>
+	{% endif %}
+</div>
+</body>
+</html>
